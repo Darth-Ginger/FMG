@@ -2,11 +2,12 @@ from datetime import datetime
 from pytz import timezone
 from typing import Any, Dict, Optional
 from loguru import logger
-import yaml, os, sys
+import yaml, os, sys, threading
 
 class ConfigAble:
     
     _instance = None
+    _lock = threading.Lock() # Thread-safe singleton
     
     DEFAULT_CONFIG_PATH = 'config.yaml'
     DEFAULT_CONFIG: Dict[str, Any] = {
@@ -22,8 +23,10 @@ class ConfigAble:
     }
     
     def __new__(cls, *args, **kwargs):
-        if cls._instance is None:
-            cls._instance = super(ConfigAble, cls).__new__(cls)
+        if not cls._instance:
+            with cls._lock:
+                if not cls._instance:
+                    cls._instance = super(ConfigAble, cls).__new__(cls)
         return cls._instance
     
     def __init__(self, config_path=None):
@@ -50,6 +53,9 @@ class ConfigAble:
             return {}
         except yaml.YAMLError as e:
             logger.error(f"Error parsing YAML configuration: {e}")
+            return self.DEFAULT_CONFIG
+        except Exception as e:
+            logger.error(f"Unexpected error loading configuration: {e}")
             return self.DEFAULT_CONFIG
 
     def _generate_default_config(self) -> None:
@@ -115,6 +121,16 @@ class ConfigAble:
         return logger
     
     def get_config(self, section: str, default: Optional[Any] = None) -> Any:
+        """
+        Retrieves a configuration option from the loaded configuration.
+
+        Args:
+            section (str): The configuration section to retrieve.
+            default (Optional[Any], optional): The default value to return if not found. Defaults to None.
+
+        Returns:
+            Any: The configuration option value
+        """
         return self.config.get(section, default)
 
     
