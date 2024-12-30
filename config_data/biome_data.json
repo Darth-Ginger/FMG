@@ -1,0 +1,138 @@
+{
+    "Basic": {
+        "Hot desert": {
+            "color": "#fbe79f",
+            "cost": 3,
+            "habitability": 4,
+            "icons": {"dune": 3, "cactus": 6, "deadTree": 1},
+            "min_temp": 20,
+            "max_temp": 50,
+            "min_moisture": 0,
+            "max_moisture": 50
+        },
+        "Cold desert": {
+            "color": "#b5b887",
+            "cost": 2,
+            "habitability": 10,
+            "icons": {"dune": 9, "deadTree": 1},
+            "min_temp": -10,
+            "max_temp": 20,
+            "min_moisture": 0,
+            "max_moisture": 100
+        },
+        "Savanna": {
+            "color": "#d2d082",
+            "cost": 120,
+            "habitability": 22,
+            "icons": {"acacia": 1, "grass": 9},
+            "min_temp": 20,
+            "max_temp": 35,
+            "min_moisture": 500,
+            "max_moisture": 1000
+        },
+        "Grassland": {
+            "color": "#c8d68f",
+            "cost": 120,
+            "habitability": 30,
+            "icons": {"grass": 1},
+            "min_temp": 10,
+            "max_temp": 30,
+            "min_moisture": 300,
+            "max_moisture": 800
+        },
+        "Tropical seasonal forest": {
+            "color": "#b6d95d",
+            "cost": 120,
+            "habitability": 50,
+            "icons": {"acacia": 8, "palm": 1},
+            "min_temp": 25,
+            "max_temp": 35,
+            "min_moisture": 1000,
+            "max_moisture": 2000
+        },
+        "Temperate deciduous forest": {
+            "color": "#29bc56",
+            "cost": 120,
+            "habitability": 100,
+            "icons": {"deciduous": 1},
+            "min_temp": 0,
+            "max_temp": 25,
+            "min_moisture": 700,
+            "max_moisture": 1500
+        },
+        "Tropical rainforest": {
+            "color": "#7dcb35",
+            "cost": 150,
+            "habitability": 80,
+            "icons": {"acacia": 5, "palm": 3, "deciduous": 1, "swamp": 1},
+            "min_temp": 25,
+            "max_temp": 35,
+            "min_moisture": 2000,
+            "max_moisture": 4000
+        },
+        "Temperate rainforest": {
+            "color": "#409c43",
+            "cost": 150,
+            "habitability": 90,
+            "icons": {"deciduous": 6, "swamp": 1},
+            "min_temp": 5,
+            "max_temp": 20,
+            "min_moisture": 1500,
+            "max_moisture": 3000
+        },
+        "Taiga": {
+            "color": "#4b6b32",
+            "cost": 100,
+            "habitability": 12,
+            "icons": {"conifer": 1},
+            "min_temp": -30,
+            "max_temp": 10,
+            "min_moisture": 200,
+            "max_moisture": 1000
+        },
+        "Tundra": {
+            "color": "#96784b",
+            "cost": 5,
+            "habitability": 4,
+            "icons": {"grass": 1},
+            "min_temp": -20,
+            "max_temp": 5,
+            "min_moisture": 100,
+            "max_moisture": 300
+        }
+    },
+    "Special": {
+        "Marine": {
+            "color": "#466eab",
+            "cost": 10,
+            "habitability": 0,
+            "icons": {},
+            "min_temp": -2,
+            "max_temp": 30,
+            "min_moisture": 5000,
+            "max_moisture": 10000
+        }, 
+        "Glacier": {
+            "color": "#d5e7eb",
+            "cost": 5000,
+            "habitability": 0,
+            "icons": {},
+            "min_temp": -50,
+            "max_temp": -10,
+            "min_moisture": 100,
+            "max_moisture": 500
+        },
+        "Wetland": {
+            "color": "#0b9131",
+            "cost": 150,
+            "habitability": 12,
+            "icons": {
+                "swamp": 1
+            },
+            "min_temp": 10,
+            "max_temp": 30,
+            "min_moisture": 2000,
+            "max_moisture": 5000
+        }
+    }
+}

@@ -1,0 +1,7 @@
+Logger:
+  compression: null
+  log_file: "Logs/global.log"
+  log_level: INFO
+  retention: 30 days
+  rotation: 10 MB
+  timezone: US/Eastern
