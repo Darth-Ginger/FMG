@@ -113,7 +113,17 @@ class ConfigAble:
                 format="{time} | {level} | {message}",
                 )
             with open(log_file, 'a') as f:
-                f.write(f"\n{'='*20} Logger Initialized @ {datetime.now(tz)} {'='*20}\n")
+                headers = [
+                    f"Logger Initialized @ {datetime.now(tz).strftime('%Y-%m-%d %I:%M:%S %p')}", 
+                    f"Initializing {sys.argv[0]}"
+                    ]
+                
+                max_len = max(len(header) for header in headers) + 20
+                decorator = '=' * max_len
+                centered_headers = [header.center(max_len, ' ') for header in headers]
+                
+                header = f"\n{decorator}\n{'\n'.join(centered_headers)}\n{decorator}\n"
+                f.write(header)
             
         logger.success(f"Logger Initialized")
     
@@ -122,16 +132,22 @@ class ConfigAble:
     
     def get_config(self, section: str, default: Optional[Any] = None) -> Any:
         """
-        Retrieves a configuration option from the loaded configuration.
+        Retrieves a configuration option from the loaded configuration using dot notation.
 
         Args:
-            section (str): The configuration section to retrieve.
+            section (str): The dot-separated configuration section to retrieve.
             default (Optional[Any], optional): The default value to return if not found. Defaults to None.
 
         Returns:
             Any: The configuration option value
         """
-        return self.config.get(section, default)
+        keys = section.split('.')
+        value = self.config
+        for key in keys:
+            value = value.get(key, default if key == keys[-1] else {})
+            if value == {}:
+                break
+        return value
 
     
 # Example usage
